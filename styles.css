@@ -32,13 +32,14 @@ body {
 }
 h1 {
     color: black;
+    font-size: 3em;
 }
 span {
     color: var(--brand);
 }
 .container {
-    border: 1px solid var(--brand);
     width: 80%;
+    max-width: 750px;
     padding: 2em 1em;
     border-radius: 5px;
     box-shadow: 1px 1px 5px var(--darknest);
@@ -54,6 +55,7 @@ span {
 #texto-input {
     padding: 0.7em;
     border-radius: 5px;
+    margin-right: 1em;
 }
 #texto-input:focus {
     outline: 1px solid var(--brand);
