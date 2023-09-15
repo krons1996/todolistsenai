@@ -6,6 +6,7 @@
     --dark: #283845;
     --darknest: #202C39;
     --brand: #97591C;
+    --buttoncolor: #31a931;
 }
 * {
     margin: 0;
@@ -52,16 +53,25 @@ span {
 #tarefas {
     min-width: 90%;
 }
+
+
+
+
 #texto-input {
     padding: 0.7em;
     border-radius: 5px;
     margin-right: 1em;
+    width: 70%;
+
 }
 #texto-input:focus {
     outline: 1px solid var(--brand);
 }
 #cadastro{
     margin-bottom: 2em;
+    width: 90%;
+    justify-content: space-between;
+    display: flex;
 }
 ul {
     list-style: none;
@@ -70,7 +80,7 @@ ul {
 li {
     display: flex;
     justify-content: space-between;
-    padding: 1em;
+    padding: 0.5em;
     background-color: var(--darknest);
     margin: 0.3em;
     border-radius: 5px;
@@ -79,14 +89,45 @@ li {
 }
 button {
     padding: 0.7em;
-    background-color: var(--light);
+    background-color: transparent;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: 0.5s;
 }
-button:hover{
-    color: var(--brand);
-    background-color: var(--lightest);
 
+button.excluir{
+    background-image: url(img/icons8-excluir-48.png);
+    background-size: 2em;
+    background-position: center center;
+    background-repeat: no-repeat;
+    width: 3em;
+    height: 3em;
+}
+button.concluir{
+    background-image: url(img/icons8-tarefa-concluída-48.png);
+    background-size: 2em;
+    background-position: center center;
+    background-repeat: no-repeat;
+    width: 3em;
+    height: 3em;
+}
+div > button:hover{
+    background-color: var(--dark);
+    border-radius: 50%;
+    transform: scale(1.2);
+
+}
+#adicionar {
+    background-color: var(--buttoncolor);
+}
+#adicionar:hover {
+    background-color: var(--lightest);
+}
+
+img {
+    width: 2em;
+}
+.concluido {
+    text-decoration: line-through;
 }
