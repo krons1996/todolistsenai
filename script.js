@@ -1,5 +1,24 @@
-const btnAdicionar = document.getElementById('adicionar')
+const btnAdicionar = document.getElementById('adicionar');
 const valorTarefa = document.getElementById('texto-input');
+const tarefas = [];
+
+
+
+
+
+const retornoMap = tarefas.map((element) => {
+    const li = document.createElement('li')
+
+    li.innerHTML = `
+    <p>${element}</p>
+    <div> 
+        <button class="excluir"></button>
+        <button class="concluir"></button>
+    </div>`
+    return li
+});
+
+console.log(retornoMap)
 
 function criarTarefa(valorTarefa) {
     const li = document.createElement('li')
@@ -14,9 +33,10 @@ function criarTarefa(valorTarefa) {
 }
 
 function renderizarTarefa(tarefa) {
-     const listaTarefas = document.querySelector('ul')
+    const listaTarefas = document.querySelector('ul')
 
-     listaTarefas.appendChild(tarefa)
+    listaTarefas.appendChild(tarefa)
+
 }
 
 btnAdicionar.addEventListener('click', (evento) => {
@@ -26,9 +46,16 @@ btnAdicionar.addEventListener('click', (evento) => {
         alert('Digite uma tarefa válida.')
     }
     else {
+
         const tarefa = criarTarefa(valorTarefa.value)
+
         renderizarTarefa(tarefa)
-    }       
+
+        tarefas.push(valorTarefa.value)
+
+    }
+    localStorage.setItem('listas', JSON.stringify(tarefas));
+
 
     valorTarefa.value = ''
 })
@@ -40,11 +67,11 @@ listaTarefas.addEventListener('click', (elemento) => {
     const itemClicado = elemento.target
 
 
-    if (itemClicado.classList.contains('excluir')){
+    if (itemClicado.classList.contains('excluir')) {
         itemClicado.parentElement.parentElement.remove()
     }
-    if (itemClicado.classList.contains('concluir')){
+    if (itemClicado.classList.contains('concluir')) {
         itemClicado.parentElement.parentElement.classList.toggle('concluido')
     }
 
-}) 
+})
