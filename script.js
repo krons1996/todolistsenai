@@ -1,24 +1,32 @@
 const btnAdicionar = document.getElementById('adicionar');
 const valorTarefa = document.getElementById('texto-input');
-const tarefas = [];
+
+const li = document.createElement('li')
 
 
+if (tarefas = JSON.parse(localStorage.getItem('listas'))) {
+
+    tarefas.forEach(element => {
+        let algumacoisa = criarTarefa(element)
+        renderizarTarefa(algumacoisa)
+    });
+}
 
 
+//  const retornoMap = arrayTarefas.map((element) => {
+//      const li = document.createElement('li')
 
-const retornoMap = tarefas.map((element) => {
-    const li = document.createElement('li')
+//     li.innerHTML = `
+//      <p>${element}</p>
+//      <div> 
+//          <button class="excluir"></button>
+//           <button class="concluir"></button>
+//        </div>`
+//     return li
+//    });
 
-    li.innerHTML = `
-    <p>${element}</p>
-    <div> 
-        <button class="excluir"></button>
-        <button class="concluir"></button>
-    </div>`
-    return li
-});
+//    console.log(retornoMap)
 
-console.log(retornoMap)
 
 function criarTarefa(valorTarefa) {
     const li = document.createElement('li')
@@ -50,6 +58,7 @@ btnAdicionar.addEventListener('click', (evento) => {
         const tarefa = criarTarefa(valorTarefa.value)
 
         renderizarTarefa(tarefa)
+        
 
         tarefas.push(valorTarefa.value)
 
@@ -69,6 +78,9 @@ listaTarefas.addEventListener('click', (elemento) => {
 
     if (itemClicado.classList.contains('excluir')) {
         itemClicado.parentElement.parentElement.remove()
+
+        localStorage.removeItem('listas');
+
     }
     if (itemClicado.classList.contains('concluir')) {
         itemClicado.parentElement.parentElement.classList.toggle('concluido')
